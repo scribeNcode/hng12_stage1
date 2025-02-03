@@ -27,11 +27,17 @@ $number = intval($_GET['number']);
 // process number entered by user 
 $isEven = $number % 2 === 0;  //Checks if it's even or odd.
 $digitSum = array_sum(str_split((string) $number)); //Calculates the sum of its digits.
+$isArmstrong = isArmstrong($number);
 
 
 // Fetches a fun fact from http://numbersapi.com.
 $funFact = file_get_contents("http://numbersapi.com/$number/math");
 
+
+// Determine properties array correctly
+$properties = $isArmstrong ? 
+    ($isEven ? ["armstrong", "even"] : ["armstrong", "odd"]) : 
+    ($isEven ? ["even"] : ["odd"]);
 
 
 // Creates a JSON response with all calculated properties and send it back to the frontend.
@@ -39,7 +45,7 @@ echo json_encode([
   "number" => $number,
   "is_prime" => isPrime($number),
   "is_perfect" => isPerfect($number),
-  "properties" => $isEven ? ["even"] : ["odd"],
+  "properties" =>  $properties,
   "digit_sum" => $digitSum,
   "fun_fact" => $funFact
 ]);
