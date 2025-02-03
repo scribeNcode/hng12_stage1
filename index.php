@@ -11,7 +11,8 @@ header('Content-Type: application/json');
 if(!isset($_GET['number']) || !is_numeric($_GET['number'])); 
 
 // if user doesnt set any number , set a user input to null and convert array to json
-echo json_encode(['number'=> $_GET['number'] ?? null, 'error' => true, 'message' => 'number is required']);
+echo json_encode(['number'=> $_GET['number'] ?? "alphabet", 'error' => true]);
+
 
 // send http response code to show the request is invalid
 http_response_code(400);
