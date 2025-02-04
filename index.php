@@ -54,6 +54,22 @@ echo json_encode([
   "fun_fact" => $funFact
 ]);
 
+// Define Functions
+
+// Function to check if a number is an Armstrong number
+function isArmstrong($num) {
+  $sum = 0;
+  $digits = str_split((string) abs($num)); // Convert number to array of digits
+  $power = count($digits);
+
+  foreach ($digits as $digit) {
+      $sum += pow($digit, $power);
+  }
+
+  return $sum == abs($num);
+}
+
+
 ?>
 
 
