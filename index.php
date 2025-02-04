@@ -8,9 +8,9 @@ header('Content-Type: application/json');
 
 
 // check if user input is  null and if it is not number type in order to handle invalid user input
-if(!isset($_GET['number']) || !is_numeric($_GET['number'])); 
+if(!isset($_GET['number']) || !is_numeric($_GET['number'])){
 
-// if user doesnt set any number , set a user input to null and convert array to json
+  // if user doesnt set any number , set a user input to null and convert array to json
 echo json_encode(['number'=> $_GET['number'] ?? "alphabet", 'error' => true]);
 
 
@@ -19,6 +19,10 @@ http_response_code(400);
 
 //stop  execution
 exit;
+
+} 
+
+
 
 
 // convert user input to number 
